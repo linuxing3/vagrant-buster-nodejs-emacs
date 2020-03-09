@@ -1,20 +1,24 @@
-# Stretch with nodejs
+# Debian Buster with nodejs
 
-## ssh issue
+## Install and provision
 
 ```bash
-vagrant reloadE
+vagrant box add --name "buster32" $YOUR_BOX_FILE
+vagrant up
+vagrant provision
+vagrant ssh-config
 ```
 
-## intall nodejs
+## Put your `ssh keys` in `keys` directory as you like
 
-```bash
-# install 10/11 is not availabe in stretch
-sudo curl -sL https://deb.nodesource.com/setup_8.x | bash -
-# better use nvm to install your node
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-# using pyenv
-curl https://pyenv.run | bash
-# using oh-my-bash, fish is not good in console2 and other win tty
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+## If you want provision with `ansible`, use the following settings
+
+```yml
+  config.vm.provision :ansible do |ansible|
+    ansible.sudo = true
+    ansible.sudo_user = "root"
+    ansible.playbook = "ansible/playbook.yml"
+    ansible.inventory_path = "ansible/hosts"
+    ansible.verbose = true
+  end
 ```

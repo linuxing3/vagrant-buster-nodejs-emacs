@@ -49,6 +49,8 @@ su -c "source /vagrant/sh/vim.sh" vagrant
 /vagrant/sh/emacs.sh
 su -c "source /vagrant/sh/emacs.sh" vagrant
 
+echo "--------------------------------------------------"
+echo "Setting development environment..."
 # Install Node.js
 su -c "source /vagrant/sh/nodejs.sh" vagrant
 

@@ -15,5 +15,5 @@ echo "installing private doom setting for linuxing3"
 git clone https://github.com/linuxing3/doom-emacs-private ~/.doom.d
 
 echo "Boostrap doom emacs"
-cd $VAGRANT_HOME/.emacs.d/bin
+cd ~/.emacs.d/bin
 ./doom install
