@@ -1,0 +1,4 @@
+.vagrant/
+.keys/
+.ssh/.git-credentials
+.ssh/.gitconfig

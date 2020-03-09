@@ -6,7 +6,7 @@
 echo "==========================================================="
 echo "installing emacs 26, another of the best editors"
 echo "==========================================================="
-sudo apt-get install -y emacs-nox
+sudo apt-get install -y emacs-nox ripgrep
 
 cd
 echo "installing doom emacs"

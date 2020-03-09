@@ -1,13 +1,23 @@
 ---
 # This playbook install some basic ubuntu packages
 
-- name: install some basic packages
+- name: install core packages
   apt: pkg={{item}} state=present
   with_items:
     - git
     - tmux
     - curl
     - ranger
+    - build-essential
+    - python-software-properties 
+    - python 
+    - python3 
+    - g++ -
+    - make
+    - libcairo2-dev 
+    - libav-tools 
+    - nfs-common
+    - portmap
 
 # (HACK): Some linux distributions didn't provide a default .bashrc.
 - name: ensure $HOME/.bashrc is present
