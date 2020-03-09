@@ -23,23 +23,26 @@ hostname nodejs-vagrant
 # ssh settings
 /vagrant/sh/ssh.sh
 
-# Vim settings:
-/vagrant/sh/vim.sh
-
 # GitHub repositories:
 /vagrant/sh/github.sh
 
-# Install Node.js
-/vagrant/sh/nodejs.sh
-
-# Python settings
-/vagrant/sh/python.sh
-
 # oh-my-bash settings
-/vagrant/sh/bash.sh
+su -c "source /vagrant/sh/bash.sh" vagrant
 
 # oh-my-tmux settings
-/vagrant/sh/tmux.sh
+su -c "source /vagrant/sh/tmux.sh" vagrant
+
+# Vim settings:
+su -c "source /vagrant/sh/vim.sh" vagrant
+
+# Emacs settings:
+su -c "source /vagrant/sh/emacs.sh" vagrant
+
+# Install Node.js
+su -c "source /vagrant/sh/nodejs.sh" vagrant
+
+# Python settings
+su -c "source /vagrant/sh/python.sh" vagrant
 
 touch /etc/vagrant-provisioned
 
