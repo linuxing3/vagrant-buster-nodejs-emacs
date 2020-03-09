@@ -8,8 +8,7 @@ echo "installing emacs 26, another of the best editors"
 echo "==========================================================="
 sudo apt-get install -y emacs-nox
 
-VAGRANT_HOME="/home/vagrant"
-cd $VAGRANT_HOME
+cd
 echo "installing doom emacs"
 git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 echo "installing private doom setting for linuxing3"

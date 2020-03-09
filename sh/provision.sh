@@ -17,6 +17,8 @@ echo "10.0.2.2 host" >> /etc/hosts
 # Use hostname command so that the new hostname takes effect immediately without a restart:
 hostname nodejs-vagrant
 
+echo "--------------------------------------------------"
+echo "Updating system and packages..."
 # Install core components
 /vagrant/sh/core.sh
 
@@ -26,16 +28,25 @@ hostname nodejs-vagrant
 # GitHub repositories:
 /vagrant/sh/github.sh
 
+
+echo "Done!"
+echo "--------------------------------------------------"
+echo "Setting user customization..."
+
 # oh-my-bash settings
+/vagrant/sh/bash.sh
 su -c "source /vagrant/sh/bash.sh" vagrant
 
 # oh-my-tmux settings
+/vagrant/sh/tmux.sh
 su -c "source /vagrant/sh/tmux.sh" vagrant
 
 # Vim settings:
+/vagrant/sh/vim.sh
 su -c "source /vagrant/sh/vim.sh" vagrant
 
 # Emacs settings:
+/vagrant/sh/emacs.sh
 su -c "source /vagrant/sh/emacs.sh" vagrant
 
 # Install Node.js
