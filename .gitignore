@@ -1,4 +1,4 @@
-.vagrant
-keys
-sh/.git-credentials
+/.vagrant
+/keys
+/sh/.git-credentials
 package.box
