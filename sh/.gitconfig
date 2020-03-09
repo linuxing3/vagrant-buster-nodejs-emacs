@@ -1,0 +1,9 @@
+[user]
+	name = linuxing3
+	email = linuxing3@qq.com
+[credential]
+	helper = store
+[color]
+	ui = true
+[core]
+	editor = vim

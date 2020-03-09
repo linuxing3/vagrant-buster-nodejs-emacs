@@ -1,0 +1,14 @@
+---
+# This playbook install some basic ubuntu packages
+
+- name: install some basic packages
+  apt: pkg={{item}} state=present
+  with_items:
+    - git
+    - tmux
+    - curl
+    - ranger
+
+# (HACK): Some linux distributions didn't provide a default .bashrc.
+- name: ensure $HOME/.bashrc is present
+  command: touch /home/{{whoami}}/.bashrc

@@ -1,0 +1,13 @@
+---
+# Playbook to bake box to a hacker's box
+
+- hosts: vagrant
+  vars:
+    whoami: vagrant
+    accept_hostkey: true
+  tasks:
+    - include: apt.yml
+    - include: base.yml
+    - include: vim.yml
+    - include: zsh.yml
+    - include: python.yml

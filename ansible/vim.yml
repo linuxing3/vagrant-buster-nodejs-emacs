@@ -1,0 +1,20 @@
+---
+# This playbook install vim and a popular vimrc in github.
+# see https://github.com/amix/vimrc
+
+- name: install vim and provide a proper vimrc
+  apt: pkg=vim state=present
+
+- name: install ctags
+  apt: pkg=exuberant-ctags state=present
+
+- name: git clone github amix/vimrc
+  sudo: no
+  git: repo=git://github.com/amix/vimrc.git
+       dest=/home/{{whoami}}/.vim_runtime
+       update=no
+       accept_hostkey=yes
+
+- name: install awesome amix/vimrc
+  sudo: no
+  shell: sh /home/{{whoami}}/.vim_runtime/install_awesome_vimrc.sh

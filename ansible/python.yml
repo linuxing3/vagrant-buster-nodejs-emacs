@@ -1,0 +1,18 @@
+---
+# This playbook install some goodies for python.
+# Goodies:
+# - ipython
+# - pip
+# - virtualenv
+# - virtualenvwrapper
+# - httpie
+
+- name: install ipython and pip for python
+  apt: pkg={{item}} state=present
+  with_items:
+    - ipython
+    - python-pip
+
+- name: install pyenv
+  sudo: no
+  shell: curl https://pyenv.run | bash

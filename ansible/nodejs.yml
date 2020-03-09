@@ -1,0 +1,17 @@
+---
+# This playbook install some goodies for nodejs.
+
+- name: install node source
+  sudo: yes
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | bash -
+
+- name: install nodejs
+  apt: pkg={{item}} state=present
+  with_items:
+    - nodejs
+    
+- name: install node packages
+  sudo: yes
+  shell:
+    - npm i -g yarn
+    - npm i -g serve
