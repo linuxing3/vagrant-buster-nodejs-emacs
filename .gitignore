@@ -1,4 +1,9 @@
-/.vagrant
-/keys
-/sh/.git-credentials
-package.box
+keys
+sh/.git-credentials
+**/*.box
+**/*.vmdk
+.vagrant/machines/default/virtualbox/action_provision
+.vagrant/machines/default/virtualbox/action_set_name
+.vagrant/machines/default/virtualbox/id
+.vagrant/machines/default/virtualbox/index_uuid
+.vagrant/machines/default/virtualbox/private_key

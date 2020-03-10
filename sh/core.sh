@@ -1,9 +1,9 @@
 echo "==========================================================="
 echo "update packages"
 echo "==========================================================="
-# sudo apt-get update
 
 echo "Install core tools"
+sudo apt-get update
 sudo apt-get install -y tmux git vim wget curl elinks
 
 echo "Install build tools"
