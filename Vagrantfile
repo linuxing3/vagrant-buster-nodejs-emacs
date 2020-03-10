@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
       'email' => nil,
       'force' => false
     },
-    'persistent_storage_location' => '.vagrant/persistent-disk.vmdk'
+    'persistent_storage_location' => '../box/editor-persistent-disk.vmdk'
   }
 
   # Setting ssh port
@@ -106,7 +106,7 @@ Vagrant.configure("2") do |config|
   # Perform preliminary persistent storage
   config.vm.provision "shell", path: "sh/persistent.sh"
   # Perform
-  config.vm.provision "shell", path: "sh/provision.sh"
+  # config.vm.provision "shell", path: "sh/core.sh"
 
   # Perform preliminary setup before the main Ansible provisioning
   # config.vm.provision 'ansible_local' do |ansible|

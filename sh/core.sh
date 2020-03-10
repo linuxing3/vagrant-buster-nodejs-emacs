@@ -3,8 +3,10 @@ echo "update packages"
 echo "==========================================================="
 
 echo "Install core tools"
-sudo apt-get update
-sudo apt-get install -y tmux git vim wget curl elinks
+sudo apt-get -y update
+sudo apt-get install -y tmux
+sudo apt-get install -y git
+sudo apt-get install -y wget curl elinks
 
 echo "Install build tools"
 sudo apt-get install -y build-essential

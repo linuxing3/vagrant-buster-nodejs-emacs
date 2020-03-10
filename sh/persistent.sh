@@ -1,6 +1,6 @@
 echo "Creating persistent storage..."
 echo "======================================================================================"
-persistent_mount='/var/persistent/var/cache/apt/archives /var/cache/apt/archives none bind 0 0'
+persistent_mount='/var/cache/apt/archives none bind 0 0'
 
 mkdir -p /var/persistent/var/cache/apt/archives \
 && grep -q -F "${persistent_mount}" /etc/fstab || echo "${persistent_mount}" >> /etc/fstab \
