@@ -1,0 +1,25 @@
+---
+# Require Debian 10
+dist: buster
+
+# Require Docker
+services:
+  - docker
+
+language: python
+
+python:
+  # Specify Python version
+  - '3.6'
+
+install:
+
+  # Install ansible
+  - pip install ansible
+
+  # Check ansible version
+  - ansible --version
+
+script:
+  # Run build script
+  - .travis/build.sh

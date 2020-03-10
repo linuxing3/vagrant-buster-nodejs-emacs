@@ -22,16 +22,16 @@ echo "Updating system and packages..."
 # Install core components
 /vagrant/sh/core.sh
 
-# ssh settings
-/vagrant/sh/ssh.sh
-
-# GitHub repositories:
-/vagrant/sh/github.sh
-
 
 echo "Done!"
 echo "--------------------------------------------------"
 echo "Setting user customization..."
+
+# ssh settings
+/vagrant/sh/ssh.sh
+
+# github settings
+/vagrant/sh/github.sh
 
 # oh-my-bash settings
 /vagrant/sh/bash.sh
