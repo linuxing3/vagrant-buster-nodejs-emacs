@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
-if [ -e "/etc/vagrant-provisioned" ];
-then
-    echo "Vagrant provisioning already completed. Restarting..."
-    rm /etc/vagrant-provisioned
-    # exit 0
-else
-    echo "Starting Vagrant provisioning process..."
-fi
+echo "--------------------------------------------------"
+echo "Updating system and packages..."
+# Install core components
+/vagrant/sh/core.sh
+sh/core.sh
 
-echo `cat /etc/vagrant-provisioned`
-echo `cat /home/vagrant/.bashrc`
+echo `ansible`
 
 echo "--------------------------------------------------"
 echo "Your vagrant instance is running at: 10.0.2.15"

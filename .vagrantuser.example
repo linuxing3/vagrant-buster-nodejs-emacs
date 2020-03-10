@@ -69,21 +69,21 @@
 #     - zswap
 
 # Uncomment the section below to change any of the VirtualBox Settings
-virtualbox:
-  name: development-environment
-  gui: false
-  cpus: 1
-  graphicscontroller: 'vboxsvga'
-  vram: '64'
-  accelerate3d: 'off'
-  memory: '1024'
-  clipboard: bidirectional
-  draganddrop: bidirectional
-  audio: dsound
-  audiocontroller: ac97
+# virtualbox:
+#   name: development-environment
+#   gui: false
+#   cpus: 1
+#   graphicscontroller: 'vboxsvga'
+#   vram: '64'
+#   accelerate3d: 'off'
+#   memory: '1024'
+#   clipboard: bidirectional
+#   draganddrop: bidirectional
+#   audio: dsound
+#   audiocontroller: ac97
 
 # Uncomment the line below to change where the persistent virtual disk is stored
-persistent_storage_location: '.vagrant/persistent-disk.vdi'
+# persistent_storage_location: '.vagrant/persistent-disk.vdi'
 
 # Uncomment the line below if you prefer a different dock positon (LEFT, RIGHT, BOTTOM)
 # dock_position: BOTTOM

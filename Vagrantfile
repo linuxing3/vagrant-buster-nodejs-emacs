@@ -3,7 +3,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-required_plugins = %w[vagrant-reload vagrant-persistent-storage vagrant-vbguest vagrant-proxyconf nugrant]
+required_plugins = %w[vagrant-reload vagrant-persistent-storage vagrant-proxyconf nugrant]
 plugins_to_install = required_plugins.reject { |plugin| Vagrant.has_plugin? plugin }
 
 unless plugins_to_install.empty?
@@ -30,6 +30,11 @@ Vagrant.configure("2") do |config|
   end
 
   config.user.defaults = {
+    'vm' => {
+      'ssh_port' => '8022',
+      'work_dir': '../../../../workspace',
+      'dropbox_dir': '../../../../Dropbox'
+    },
     'proxy' => {
       'enabled' => false,
       'http' => 'http://10.0.0.2:3128/',
@@ -44,6 +49,9 @@ Vagrant.configure("2") do |config|
     },
     'git_proxy' => {
       'http' => nil
+    },
+    'ansible' => {
+      'skip_tags' => []
     },
     'virtualbox' => {
       'name' => 'development-environment',
@@ -74,6 +82,8 @@ Vagrant.configure("2") do |config|
     'persistent_storage_location' => '.vagrant/persistent-disk.vdi'
   }
 
+  # Setting ssh port
+  config.ssh.port = config.user.vm.ssh_port
 
   # Setting persistent storage
   config.persistent_storage.enabled = true
@@ -108,9 +118,9 @@ Vagrant.configure("2") do |config|
   # Use this to insert your own (and possibly rewrite) Vagrant config lines.
   # If a file 'Customfile' exists in the same directory as this Vagrantfile,
   # it will be evaluated as ruby inline as it loads.
-  if File.exist?(File.join(vagrant_dir, 'Customfile'))
-    eval(IO.read(File.join(vagrant_dir, 'Customfile')), binding)
-  end
+  # if File.exist?(File.join(vagrant_dir, 'Customfile'))
+  #   eval(IO.read(File.join(vagrant_dir, 'Customfile')), binding)
+  # end
 
 
   if config.user.proxy.enabled
@@ -126,8 +136,8 @@ Vagrant.configure("2") do |config|
   end
 
   # Mounting my dirs
-  config.vm.synced_folder "../../../../workspace", "/home/vagrant/workspace"
-  config.vm.synced_folder "../../../../Dropbox", "/home/vagrant/Dropbox"
+  config.vm.synced_folder config.user.vm.work_dir, "/home/vagrant/workspace"
+  config.vm.synced_folder config.user.vm.dropbox_dir, "/home/vagrant/Dropbox"
 
   # Perform preliminary persistent storage
   config.vm.provision "shell", path: "sh/persistent.sh"
@@ -136,7 +146,12 @@ Vagrant.configure("2") do |config|
 
   # Perform preliminary setup before the main Ansible provisioning
   config.vm.provision 'ansible_local' do |ansible|
-    ansible.playbook = 'provisioning/init.yml'
+    ansible.playbook = 'ansible/hackbook.yml'
     ansible.skip_tags = config.user.ansible.skip_tags
+    ansible.extra_vars = {      
+     git_user_name: config.user.git_user.name,
+     git_user_email: config.user.git_user.email,
+     git_user_force: config.user.git_user.force
+   }
   end
 end

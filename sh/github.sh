@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 cd
 echo "==========================================================="
 cp /vagrant/sh/.gitconfig /home/vagrant/.gitconfig

@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 if [ -e "/etc/vagrant-provisioned" ];
 then
     echo "Vagrant provisioning already completed. Restarting..."

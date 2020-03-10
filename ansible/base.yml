@@ -5,14 +5,17 @@
   apt: pkg={{item}} state=present
   with_items:
     - git
+    - vim
     - tmux
     - curl
+    - wget
     - ranger
     - build-essential
+    - openssh
     - python-software-properties 
-    - python 
-    - python3 
-    - g++ -
+    - python3
+    - python-pip
+    - g++
     - make
     - libcairo2-dev 
     - libav-tools 
@@ -22,3 +25,8 @@
 # (HACK): Some linux distributions didn't provide a default .bashrc.
 - name: ensure $HOME/.bashrc is present
   command: touch /home/{{whoami}}/.bashrc
+
+# (HACK): Do ansible local
+- name: install ansible
+  sudo: no
+  shell: pip install ansible

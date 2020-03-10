@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Skipping for snapd
 # sudo apt install snapd
 # snap install emacs --classic
