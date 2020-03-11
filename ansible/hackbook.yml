@@ -2,6 +2,7 @@
 # Playbook to bake box to a hacker's box
 
 - hosts: vagrant
+  become: yes
   vars:
     whoami: vagrant
     accept_hostkey: true

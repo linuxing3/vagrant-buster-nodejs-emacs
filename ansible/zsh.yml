@@ -3,39 +3,19 @@
 # then set zsh as the default system login shell.
 
 - name: install zsh
-  apt: pkg=zsh state=present
+  apt: 
+    name: zsh
+    update_cache: yes
 
-- name: git clone oh-my-zsh
-  sudo: no
-  git: repo=git://github.com/robbyrussell/oh-my-zsh.git
-       dest=/home/{{whoami}}/.oh-my-zsh
-       update=no
+- git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: /home/{{whoami}}/.oh-my-zsh
 
 - name: install zshrc from oh-my-zsh
-  sudo: no
   command: /bin/cp /home/{{whoami}}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{whoami}}/.zshrc
 
 - name: set theme for oh-my-zsh
-  sudo: no
-  lineinfile: dest=/home/{{whoami}}/.zshrc
-              regexp='ZSH_THEME="robbyrussell"'
-              line='ZSH_THEME="ys"'
-              state=present
-              backup=no
-
-- name: replace bash with zsh as the default login shell
-  sudo: yes
-  shell: chsh -s `which zsh` {{whoami}}
-
-- name: import hackerrc file
-  sudo: no
-  copy: src=files/hackerrc dest=/home/{{whoami}}/.hackerrc
-
-- name: import some goodies for bash and zsh
-  sudo: no
-  lineinfile: dest={{item}} regexp="hackerrc"
-              insertafter=EOF line="source $HOME/.hackerrc"
-              state=present backup=yes
-  with_items:
-    - /home/{{whoami}}/.bashrc
-    - /home/{{whoami}}/.zshrc
+  lineinfile:
+    path: /home/{{whoami}}/.zshrc
+    regexp: 'ZSH_THEME="robbyrussell"'
+    line: 'ZSH_THEME="ys"'
